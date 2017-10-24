@@ -5,6 +5,20 @@ class StockPricesController < ApplicationController
   # GET /stock_prices.json
   def index
     @stock_prices = StockPrice.all
+
+    # @maximum_high = 0.0
+    # @stock_prices.each do |stock_price|
+    #   @maximum_high = stock_price.high if stock_price.high > @maximum_high
+    # end
+
+    @week_count = StockPrice.count
+    
+    @maximum_high = StockPrice.maximum(:high)
+    @minimum_low = StockPrice.minimum(:low)
+    @average_close = StockPrice.average(:close)
+    @maximum_volume = StockPrice.maximum(:volume)
+    @minimum_volume = StockPrice.minimum(:volume)
+    @total_volume = StockPrice.sum(:volume)
   end
 
   # GET /stock_prices/1
