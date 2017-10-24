@@ -12,13 +12,16 @@ class StockPricesController < ApplicationController
     # end
 
     @week_count = StockPrice.count
-    
+
     @maximum_high = StockPrice.maximum(:high)
     @minimum_low = StockPrice.minimum(:low)
     @average_close = StockPrice.average(:close)
+
     @maximum_volume = StockPrice.maximum(:volume)
     @minimum_volume = StockPrice.minimum(:volume)
     @total_volume = StockPrice.sum(:volume)
+
+    @week_of_maximum_high = StockPrice.order(high: :desc).limit(1).first
   end
 
   # GET /stock_prices/1

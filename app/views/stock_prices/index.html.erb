@@ -23,6 +23,10 @@
 
   <dt>Total Volume</dt>
   <dd><%= number_to_human @total_volume %></dd>
+
+  <dt>Week of Maximum High</dt>
+  <dd><%= @week_of_maximum_high.date.to_formatted_s(:long) %></dd>
+  <dd><%= @week_of_maximum_high.high %></dd>
 </dl>
 
 <table>
